@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
 
 const Login = () => {
-    const handelLogin = e =>{
-        e.preventDefault();
-        const from = e.target;
-        const email = from.email.value;
-        const password = from.password.value;
-        console.log( email, password);
-        
-    }
+  const handelLogin = async (e) => {
+    e.preventDefault();
+    const from = e.target;
+    const email = from.email.value;
+    const password = from.password.value;
+    const userData = { email, password };
+
+    fetch("https://react-interview.crd4lc.easypanel.host/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <>
       <div className="font-serif">
