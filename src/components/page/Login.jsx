@@ -60,7 +60,7 @@ const Login = () => {
                   <h1 className="text-white ml-4 mt-1  ">
                     Don`t have an account?
                     <span className="ml-2  text-blue-700">
-                      <Link to={"/registar"}> Register </Link>
+                      <Link to={"/register"}> Register </Link>
                     </span>
                   </h1>
                 </form>
