@@ -1,19 +1,36 @@
 import Navbar from "../homeComponents/Navbar";
 
 const Course = () => {
-    const handelCourse = async (e) => {
-        e.preventDefault();
-        const from = e.target;
-        const title = from.title.value;
-        const description = from.description.value;
-        const badge_text = from.badge_text.value;
-        const badge_color = from.badge_color.value;
-        const instructor_name = from.instructor_name.value;
-    
-        const courseData = {title,description,badge_text,badge_color,instructor_name  };
-        console.log(courseData);
+  const handelCourse = async (e) => {
+    e.preventDefault();
+    const from = e.target;
+    const title = from.title.value;
+    const description = from.description.value;
+    const badge_text = from.badge_text.value;
+    const badge_color = from.badge_color.value;
+    const instructor_name = from.instructor_name.value;
 
-      };
+    const courseData = {
+      title,
+      description,
+      badge_text,
+      badge_color,
+      instructor_name,
+    };
+    console.log(courseData);
+    const response = await fetch(
+      "https://react-interview.crd4lc.easypanel.host/api/course",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(courseData),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
 
   return (
     <>
@@ -62,7 +79,6 @@ const Course = () => {
                     name="instructor_name"
                   />
                 </div>
-
               </div>
               <div>
                 <span className="label-text"> Descriiption </span>
