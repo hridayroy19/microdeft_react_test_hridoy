@@ -3,6 +3,14 @@ import Navbar from "../homeComponents/Navbar";
 const Course = () => {
   const handelCourse = async (e) => {
     e.preventDefault();
+
+    const getToken = () => localStorage.getItem("access-token");
+    const token = getToken();
+  //check token
+    if (!token) {
+      alert("You must be logged in to create a course.");
+      return;
+    }
     const from = e.target;
     const title = from.title.value;
     const description = from.description.value;
@@ -24,6 +32,7 @@ const Course = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(courseData),
       }
