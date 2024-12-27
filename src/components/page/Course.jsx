@@ -6,7 +6,7 @@ const Course = () => {
 
     const getToken = () => localStorage.getItem("access-token");
     const token = getToken();
-  //check token
+    //check token
     if (!token) {
       alert("You must be logged in to create a course.");
       return;
@@ -32,7 +32,7 @@ const Course = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(courseData),
       }
